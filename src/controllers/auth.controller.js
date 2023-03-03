@@ -9,7 +9,6 @@ export const getGoogleAuthScreen = (req, res) =>
   res.redirect(googleService.getGoogleAuthUri(req.query.sourceUri));
 
 export const handleGoogleRedirect = catchAsync(async (req, res) => {
-  console.log('diasohdoiashdioashd');
   const { code, state } = req.query;
   if (!code || !state)
     throw new AppError(
