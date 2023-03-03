@@ -7,9 +7,9 @@ const schema = new mongoose.Schema(
       required: [true, 'Notification must have a type'],
       enum: ['like', 'comment', 'follow', 'message'],
     },
-    template: {
+    content: {
       type: String,
-      required: [true, 'Notification must have a template'],
+      required: [true, 'Notification must have its content'],
     },
     sender: {
       type: mongoose.Types.ObjectId,
@@ -36,5 +36,5 @@ const schema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.model('User', schema);
-export default User;
+const Notification = mongoose.model('Notification', schema);
+export default Notification;

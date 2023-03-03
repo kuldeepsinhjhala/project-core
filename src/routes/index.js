@@ -1,6 +1,7 @@
 import express from 'express';
 import authRouter from './auth.routes';
 import userRouter from './user.routes';
+import notificationRouter from './notification.routes';
 
 const mainRouter = express.Router();
 
@@ -11,6 +12,9 @@ mainRouter.get('/health', (req, res) =>
   })
 );
 
-mainRouter.use('/auth', authRouter).use('/users', userRouter);
+mainRouter
+  .use('/auth', authRouter)
+  .use('/users', userRouter)
+  .use('/notifications', notificationRouter);
 
 export default mainRouter;

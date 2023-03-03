@@ -17,7 +17,7 @@ const schema = new mongoose.Schema(
       type: String,
       default: 'user',
       enum: {
-        values: ['user', 'admin', 'lead-guide', 'guide'],
+        values: ['user', 'admin'],
         message: 'Invalid role provided',
       },
     },
