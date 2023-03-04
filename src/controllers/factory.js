@@ -12,7 +12,9 @@ export const getAll = Model =>
       .filter()
       .sort()
       .limitFields();
-    const docs = await advancedApi.query;
+    const { query } = advancedApi;
+    query.populate('receiver');
+    const docs = await query;
     res.formatter.ok(docs, { results: docs.length });
   });
 
