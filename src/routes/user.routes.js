@@ -12,4 +12,6 @@ router.get(
   userController.getUser
 );
 
+router.get('/', userController.getAllUsers);
+
 export default router;

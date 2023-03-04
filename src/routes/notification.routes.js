@@ -7,6 +7,13 @@ const router = express.Router();
 router.use(authController.protect);
 
 /**
+ * @method POST
+ * @route /notifications
+ * @returns All notifications for current user
+ */
+router.post('/', notificationController.createNotification);
+
+/**
  * @method GET
  * @route /notifications
  * @returns All notifications for current user

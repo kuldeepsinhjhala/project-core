@@ -2,18 +2,20 @@ import { catchAsync, FeaturedAPI } from '../utils';
 
 export const createOne = Model =>
   catchAsync(async (req, res) => {
+    console.log(req.body);
     const doc = await Model.create(req.body);
     res.formatter.created(doc);
   });
 
-export const getAll = Model =>
+export const getAll = (Model, populateOptions) =>
   catchAsync(async (req, res) => {
     const advancedApi = new FeaturedAPI(req.query, Model.find())
       .filter()
       .sort()
       .limitFields();
     const { query } = advancedApi;
-    query.populate('receiver');
+    if (populateOptions) query.populate(populateOptions);
+    query.populate(populateOptions);
     const docs = await query;
     res.formatter.ok(docs, { results: docs.length });
   });
